@@ -21,10 +21,8 @@ def download_audio(url: str) -> str:
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
 
-    # Search for the resulting .mp3 file
     mp3_file = f"{base_filename}.mp3"
     if not os.path.exists(mp3_file):
-        # Try to match anything that might have double extensions
         matches = glob.glob(f"{base_filename}*.mp3")
         if matches:
             return matches[0]
