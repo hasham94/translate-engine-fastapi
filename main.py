@@ -13,7 +13,7 @@ app = FastAPI()
 # ✅ Add CORS Middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[""],  # React dev server
+    allow_origins=["*"],  # FE dev server
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
