@@ -2,6 +2,8 @@ import uuid
 import yt_dlp
 import os
 import glob
+from fastapi import HTTPException
+from yt_dlp.utils import DownloadError
 
 def download_audio(url: str) -> str:
     base_filename = f"audio_{uuid.uuid4()}"
@@ -18,8 +20,13 @@ def download_audio(url: str) -> str:
         'ffmpeg_location': '/opt/homebrew/bin',
     }
 
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([url])
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([url])
+    except DownloadError:
+        raise HTTPException(status_code=400, detail="Invalid URL or unable to download video audio.")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
 
     mp3_file = f"{base_filename}.mp3"
     if not os.path.exists(mp3_file):
