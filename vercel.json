@@ -5,8 +5,12 @@
             "src": "main.py",
             "use": "@vercel/python",
             "config": {
-                "installCommand": "pip install -r requirements.txt --target .",
-                "maxLambdaSize": "50mb"
+                "maxLambdaSize": "50mb",
+                "installCommand": "pip install --upgrade pip && pip install -r requirements.txt --target .",
+                "includeFiles": [
+                    "services/transcriber.py",
+                    "services/downloader.py"
+                ]
             }
         }
     ],
