@@ -6,11 +6,7 @@
             "use": "@vercel/python",
             "config": {
                 "maxLambdaSize": "50mb",
-                "installCommand": "pip install --upgrade pip && pip install -r requirements.txt --target .",
-                "includeFiles": [
-                    "services/transcriber.py",
-                    "services/downloader.py"
-                ]
+                "installCommand": "pip install --upgrade pip && pip install -r requirements.txt --target ."
             }
         }
     ],

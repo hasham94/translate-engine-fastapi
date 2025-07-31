@@ -1,6 +1,6 @@
 fastapi
 uvicorn
 python-multipart
-yt-dlp=yt-dlp==2023.12.30
-openai-whisper==20231117  # Lighter package
+yt-dlp==2023.12.30  # Removed duplicate package name
+openai-whisper==20231117
 translatepy==2.3
