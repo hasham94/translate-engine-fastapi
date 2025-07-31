@@ -2,8 +2,6 @@ fastapi
 uvicorn
 python-multipart
 yt-dlp
-openai
 whisper-openai
 translatepy
 ffmpeg-python
-python-dotenv
